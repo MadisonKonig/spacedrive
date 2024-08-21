@@ -137,6 +137,10 @@ const shortcuts = {
 		macOS: ['Meta', 'Backspace'],
 		all: ['Delete']
 	},
+	selectAll: {
+		macOS: ['Meta', 'KeyA'],
+		all: ['Control', 'KeyA']
+	},
 	explorerEscape: {
 		all: ['Escape']
 	},

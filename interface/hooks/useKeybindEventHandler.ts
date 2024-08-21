@@ -56,7 +56,7 @@ export const useKeybindEventHandler = (libraryId?: string) => {
 					console.log('Duplicate!'); // TODO Implement
 					break;
 				case 'select_all':
-					console.log('Select All!'); // TODO Implement
+					console.log('Select All!!'); // TODO Implement
 					break;
 				case 'window_fullscreened':
 					windowState.isFullScreen = true;

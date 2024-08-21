@@ -80,6 +80,7 @@ export const Component = () => {
 					{ shortcut: 'cutObject', description: t('cut_object') },
 					{ shortcut: 'copyObject', description: t('copy_object') },
 					{ shortcut: 'pasteObject', description: t('paste_object') },
+					{ shortcut: 'selectAll', description: t('select all')},
 					{ shortcut: 'duplicateObject', description: t('duplicate_object') },
 					{ shortcut: 'openObject', description: t('open_object') },
 					{

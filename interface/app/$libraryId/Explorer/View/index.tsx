@@ -96,6 +96,7 @@ export const View = ({ emptyNotice, ...contextProps }: ExplorerViewProps) => {
 	});
 
 	const activeItem = useActiveItem();
+	// const explorerView = useExplorerViewContext();
 
 	useExplorerShortcuts();
 
@@ -204,6 +205,7 @@ export const View = ({ emptyNotice, ...contextProps }: ExplorerViewProps) => {
 
 const useExplorerShortcuts = () => {
 	const explorer = useExplorerContext();
+
 	const [isRenaming, tagAssignMode] = useSelector(explorerStore, (s) => [
 		s.isRenaming,
 		s.isTagAssignModeActive
@@ -215,10 +217,29 @@ const useExplorerShortcuts = () => {
 
 	const { copy, cut, duplicate, paste } = useExplorerCopyPaste();
 
+	const selectAll = () =>{
+		console.log("select all!");
+		// explorer.getItemUniqueId(item)
+		console.log(explorer.items);
+		if(!explorer.items?.length) return;
+		console.log(explorer.items.length);
+		for(let i: number = 0; i < explorer.items.length; i++){
+			const item = explorer.items[i];
+			if(!item) return;
+			// if(explorerOperatingSystem !== 'windows' && !explorer.isItemSelected(item))
+			console.log(item.item);
+			// explorer.addSelectedItem(item.item.id)
+			// explorerStore.updateActiveItem(explorer.getItemUniqueId(item), {
+			// 	updateFirstItem: true
+			// });
+		}
+	}
+
 	useShortcut('copyObject', copy);
 	useShortcut('cutObject', cut);
 	useShortcut('duplicateObject', duplicate);
 	useShortcut('pasteObject', paste);
+	useShortcut('selectAll', selectAll);
 
 	useShortcut('toggleTagAssignMode', (e) => {
 		explorerStore.isTagAssignModeActive = !tagAssignMode;
