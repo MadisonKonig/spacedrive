@@ -218,21 +218,21 @@ const useExplorerShortcuts = () => {
 	const { copy, cut, duplicate, paste } = useExplorerCopyPaste();
 
 	const selectAll = () =>{
-		console.log("select all!");
-		// explorer.getItemUniqueId(item)
-		console.log(explorer.items);
-		if(!explorer.items?.length) return;
-		console.log(explorer.items.length);
-		for(let i: number = 0; i < explorer.items.length; i++){
-			const item = explorer.items[i];
-			if(!item) return;
-			// if(explorerOperatingSystem !== 'windows' && !explorer.isItemSelected(item))
-			console.log(item.item);
-			// explorer.addSelectedItem(item.item.id)
-			// explorerStore.updateActiveItem(explorer.getItemUniqueId(item), {
-			// 	updateFirstItem: true
-			// });
-		}
+		// console.log("select all!");
+		// // explorer.getItemUniqueId(item)
+		// console.log(explorer.items);
+		// if(!explorer.items?.length) return;
+		// console.log(explorer.items.length);
+		// for(let i: number = 0; i < explorer.items.length; i++){
+		// 	const item = explorer.items[i];
+		// 	if(!item) return;
+		// 	// if(explorerOperatingSystem !== 'windows' && !explorer.isItemSelected(item))
+		// 	console.log(item);
+		// 	explorer.addSelectedItem(item)
+		// 	// explorerStore.updateActiveItem(explorer.getItemUniqueId(item), {
+		// 	// 	updateFirstItem: true
+		// 	// });
+		// }
 	}
 
 	useShortcut('copyObject', copy);
