@@ -113,7 +113,7 @@ export const Inspector = forwardRef<HTMLDivElement, Props>(
 						</div>
 					)}
 
-					<div className="flex select-text flex-col overflow-hidden rounded-lg border border-app-line bg-app-box py-0.5 shadow-app-shade/10">
+					<div className="flex select-none flex-col overflow-hidden rounded-lg border border-app-line bg-app-box py-0.5 shadow-app-shade/10">
 						{!isNonEmpty(selectedItems) ? (
 							<div className="flex h-[390px] items-center justify-center text-sm text-ink-dull">
 								{t('nothing_selected')}
@@ -643,12 +643,12 @@ export const MetaData = ({ icon: Icon, label, value, tooltipValue, onClick }: Me
 	return (
 		<div className="flex content-start justify-start text-xs text-ink-dull" onClick={onClick}>
 			{Icon && <Icon weight="bold" className="mr-2 shrink-0" />}
-			<span className="mr-2 flex flex-1 items-start justify-items-start whitespace-nowrap">
+			<span className="mr-2 flex flex-1 select-none items-start justify-items-start whitespace-nowrap">
 				{label}
 			</span>
 			<Tooltip
 				label={tooltipValue || value}
-				className="truncate whitespace-pre text-ink"
+				className="select-none truncate whitespace-pre text-ink"
 				tooltipClassName="max-w-none"
 			>
 				{value ?? '--'}
