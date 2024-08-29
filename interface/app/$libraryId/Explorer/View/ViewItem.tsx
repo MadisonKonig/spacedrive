@@ -127,19 +127,17 @@ export const useViewItemDoubleClick = () => {
 				if(itemsArray[0]?.location_id !== null){
 					const take = searchParams.get('take');
 					for(let i = 0; i < itemsArray.length; i++){
-						console.log(itemsArray);
 						const params = new URLSearchParams({
 							path: `${itemsArray[i]?.materialized_path}${itemsArray[i]?.name}/`,
 							...(take !== null && { take })
 						});
+						// open first selected in same tab
 						if(!i){
 							navigate(`/${library.uuid}/location/${itemsArray[i]?.location_id}?${params}`);
 						} else {
-							console.log("more items lol");
-							// find where the path is
 							const redirect = {
-								pathname: `/${library.uuid}/location/${itemsArray[i]?.location_id}?${params}`,
-								search: undefined
+								pathname: `/${library.uuid}/location/${itemsArray[i]?.location_id}`,
+								search: `${params}` ? `?${params}` : undefined
 							};
 							console.log(redirect);
 							if (!tabs) return null;
@@ -149,20 +147,6 @@ export const useViewItemDoubleClick = () => {
 					}
 				}
 				return;
-
-				// if (item) {
-				// 	if (item.location_id !== null) {
-				// 		const take = searchParams.get('take');
-				// 		const params = new URLSearchParams({
-				// 			path: `${item.materialized_path}${item.name}/`,
-				// 			...(take !== null && { take })
-				// 		});
-
-				// 		console.log("this is it!!");
-				// 		navigate(`/${library.uuid}/location/${item.location_id}?${params}`);
-				// 	}
-				// 	return;
-				// }
 			}
 
 			if (items.locations.length > 0) {
