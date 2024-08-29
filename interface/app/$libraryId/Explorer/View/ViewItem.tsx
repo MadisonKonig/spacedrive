@@ -24,6 +24,7 @@ import { getQuickPreviewStore } from '../QuickPreview/store';
 import { explorerStore } from '../store';
 import { uniqueId } from '../util';
 import { useExplorerViewContext } from './Context';
+import { useTabsContext } from '~/TabsContext';
 
 export const useViewItemDoubleClick = () => {
 	const navigate = useNavigate();
@@ -31,6 +32,7 @@ export const useViewItemDoubleClick = () => {
 	const { library } = useLibraryContext();
 	const { openFilePaths, openEphemeralFiles } = usePlatform();
 	const [searchParams] = useRawSearchParams();
+	const tabs = useTabsContext();
 
 	const updateAccessTime = useLibraryMutation('files.updateAccessTime');
 
@@ -121,19 +123,46 @@ export const useViewItemDoubleClick = () => {
 
 			if (items.dirs.length > 0) {
 				const [item] = items.dirs;
-				if (item) {
-					if (item.location_id !== null) {
-						const take = searchParams.get('take');
+				const itemsArray = items.dirs;
+				if(itemsArray[0]?.location_id !== null){
+					const take = searchParams.get('take');
+					for(let i = 0; i < itemsArray.length; i++){
+						console.log(itemsArray);
 						const params = new URLSearchParams({
-							path: `${item.materialized_path}${item.name}/`,
+							path: `${itemsArray[i]?.materialized_path}${itemsArray[i]?.name}/`,
 							...(take !== null && { take })
 						});
+						if(!i){
+							navigate(`/${library.uuid}/location/${itemsArray[i]?.location_id}?${params}`);
+						} else {
+							console.log("more items lol");
+							// find where the path is
+							const redirect = {
+								pathname: `/${library.uuid}/location/${itemsArray[i]?.location_id}?${params}`,
+								search: undefined
+							};
+							console.log(redirect);
+							if (!tabs) return null;
+							tabs.createTab(redirect);
+						}
 
-						console.log("this is it!!");
-						navigate(`/${library.uuid}/location/${item.location_id}?${params}`);
 					}
-					return;
 				}
+				return;
+
+				// if (item) {
+				// 	if (item.location_id !== null) {
+				// 		const take = searchParams.get('take');
+				// 		const params = new URLSearchParams({
+				// 			path: `${item.materialized_path}${item.name}/`,
+				// 			...(take !== null && { take })
+				// 		});
+
+				// 		console.log("this is it!!");
+				// 		navigate(`/${library.uuid}/location/${item.location_id}?${params}`);
+				// 	}
+				// 	return;
+				// }
 			}
 
 			if (items.locations.length > 0) {
