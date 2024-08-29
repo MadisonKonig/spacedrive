@@ -129,6 +129,7 @@ export const useViewItemDoubleClick = () => {
 							...(take !== null && { take })
 						});
 
+						console.log("this is it!!");
 						navigate(`/${library.uuid}/location/${item.location_id}?${params}`);
 					}
 					return;
