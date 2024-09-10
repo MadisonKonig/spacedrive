@@ -188,6 +188,7 @@
   "downloading_update": "Güncelleme İndiriliyor",
   "drag_to_resize": "Boyutlandırmak için sürükleyin",
   "duplicate": "Kopyala",
+  "duplicate_current_tab": "Geçerli sekmeyi kopyala",
   "duplicate_object": "Nesneyi çoğalt",
   "duplicate_success": "Öğeler kopyalandı",
   "edit": "Düzenle",
